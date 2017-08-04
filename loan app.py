@@ -40,9 +40,6 @@ def project(x, y=0):
             add = interest(balance, rate)
             new = new_balance(balance, add)
             total_loss += add
-            print('final payment: ' + str(new))
-            print('Total interest lost: ' + str(total_loss))
-            print('Months left: ' + str(month))
             balance = 0
         else:
             print('something went wrong')
@@ -51,10 +48,28 @@ def project(x, y=0):
 
 final1 = project(debt1)
 
-project(debt1)
+final1_extra = project(debt1, extra)
 
-project(debt1, extra) 
+final2 = project(debt2)
 
-project(debt2)
+final2_extra = project(debt2, extra)
 
-project(debt2, extra)
+def output(x):
+    print('Final Balance: ' + str(x[0]))
+    print('Interest lost: ' + str(x[1]))
+    print('Months to until done: ' + str(x[2]))
+
+output(final1)
+
+output(final2)
+
+def comparison(x, y):
+    interest_saved = x[1] - y[1]
+    months_saved = x[2] - y[2]
+    print('Interested saved: ' + str(interest_saved))
+    print('Months saved: ' + str(months_saved))
+
+comparison(final1,final1_extra)
+
+    
+
