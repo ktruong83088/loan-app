@@ -4,7 +4,7 @@ debt3 = [30000,7,300]
 
 debts = [debt1,debt2,debt3]
 
-extra = 500
+extra = int(input('Extra amt: '))
 
 def interest(bal, interest):
     x = ((interest/100)*bal)/12
@@ -47,17 +47,26 @@ def output(x):
     print('Months to until done: ' + str(x[2]))
 
 
-def run_project(x, y=0):
+def run_project(x, extra):
     out = []
+    out_extra = []
+    y = extra
     x = debts
     for debt in debts:
-        out = project(debt, y)
+        out = project(debt)
         output(out)
+    for debt in debts:
+        out_extra = project(debt, y)
+        output(out_extra)
 
-run_project(debts)
+run_project(debts, extra)
 
 def comparison(x, y):
     interest_saved = x[1] - y[1]
     months_saved = x[2] - y[2]
     print('Interested saved: ' + str(interest_saved))
     print('Months saved: ' + str(months_saved))
+
+
+
+    
