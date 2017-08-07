@@ -1,14 +1,8 @@
-
-"""
-balance = 10000
-rate = 6
-min_payment = 200
-extra = 200
-new_pay = min_payment + extra
-"""
-
-debt1 = [10000,6,200]
+debt1 = [7350.03,6.990,209.43]
 debt2 = [20000,6,300]
+debt3 = [30000,7,300]
+
+debts = [debt1,debt2,debt3]
 
 extra = 500
 
@@ -46,30 +40,24 @@ def project(x, y=0):
     final = [new, total_loss, month]
     return final
 
-final1 = project(debt1)
-
-final1_extra = project(debt1, extra)
-
-final2 = project(debt2)
-
-final2_extra = project(debt2, extra)
 
 def output(x):
     print('Final Balance: ' + str(x[0]))
     print('Interest lost: ' + str(x[1]))
     print('Months to until done: ' + str(x[2]))
 
-output(final1)
 
-output(final2)
+def run_project(x, y=0):
+    out = []
+    x = debts
+    for debt in debts:
+        out = project(debt, y)
+        output(out)
+
+run_project(debts)
 
 def comparison(x, y):
     interest_saved = x[1] - y[1]
     months_saved = x[2] - y[2]
     print('Interested saved: ' + str(interest_saved))
     print('Months saved: ' + str(months_saved))
-
-comparison(final1,final1_extra)
-
-    
-
